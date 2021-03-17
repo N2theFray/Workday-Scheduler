@@ -3,6 +3,7 @@ var d = new Date();
 var todaysDate = d.toDateString();
 var currentTime = d.getHours();
 
+
 // if time is in afternoon convert to 24 hr standard
 if (currentTime === 1 || currentTime === 2 || currentTime === 3 || currentTime === 5 || currentTime === 5){
     currentTime = currentTime + 12;
@@ -10,6 +11,8 @@ if (currentTime === 1 || currentTime === 2 || currentTime === 3 || currentTime =
 
 //init taskArray
 var taskArray =JSON.parse(localStorage.getItem("taskArray"));
+
+    //init taskArray if none exist in local storage
     if(!taskArray){
         taskArray = []
     }
@@ -17,13 +20,13 @@ var taskArray =JSON.parse(localStorage.getItem("taskArray"));
 
 //hour checker function
 function hourChecker () {
-       //scan each hour for content of span
+       //scan each .hour for content of span
     $(".hour").each(function(thisHour){
         var thisHour = $(this)
         .find("span")
         .html();
         
-        // console.log(thisHour);
+        
         //convert string to number
          thisHour = Number(thisHour);
         // if afternoon convert to 24 standard
@@ -57,16 +60,16 @@ function saveTasks(){
 function loadTasks(){
     var i = 0;
         $(".hour").each(function(){
-            var check = $(this)
-            .siblings(".description")
-            .text(taskArray[i]);
+            $(this)
+                .siblings(".description")
+                .text(taskArray[i]);
         i++;
         });   
 };
 
 
 $("#currentDay").each(function(){
-    checkCheck = $(this)
+    $(this)
         .text(todaysDate);
 })
 
@@ -95,18 +98,25 @@ $(".saveBtn").on("click", function(){
     saveTasks();
 })
 
+//clear schedule from page and local storage
 $(".clearButton").on("click", function(){
     localStorage.clear();
     location.reload();
-    // loadTasks();
 });
 
-//itit load and time check
+//init load and time check
 loadTasks();
 hourChecker();
 
-// refresh window every minute
+// refresh window on the hour to update color changes
 setInterval(function(){
-    hourChecker();
-    console.log("time check");
-}, (1000*30));
+    var time = new Date ()
+    var getMinutes = time.getMinutes()
+
+    if(getMinutes === 59){
+        alert("Save your work, the hour is nigh")
+    } else if (getMinutes === 0){
+        location.reload();
+    }
+    
+}, (1000*60));
