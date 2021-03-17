@@ -1,47 +1,52 @@
+//get current tinme
 var d = new Date();
-var currentTime = d.getHours().toString();
+var currentTime = d.getHours();
 
-$(".row").on("click", ".description", function(){
+// if time is in afternoon convert to 24 hr standard
+if (currentTime === 1 || currentTime === 2 || currentTime === 3){
+    currentTime = currentTime + 12;
+}
 
-    var time = $(this)
-    .siblings(".hour")
-    .find("span")
-    .html();
-   
-    var d = new Date();
-    var currentTime = d.getHours().toString();
-    
- 
-    if(currentTime === time){
-        console.log("gtg");
-        $("textarea").addClass("present");
-    }
-})
+//intitiate first color change
+$( ".row" ).ready(function(){
+    hourChecker();
+});
 
-// $( ".container" ).click(function() {
-//     $( ".hour" ).each(function(index) {
-//       console.log(index + $(this).text);
-//     });
-//   });
-  
-  $( ".row" ).ready(function(){
-        $(".hour").each(function(index){
-          var thisHour = $(this)
-            .find("span")
-            .html();
-            console.log(index + ":" + thisHour)
-        })
 
-        $(".description").each(function(index){
-            var wtf =   $(this)
-            // .find("textarea")
-            .html();
-            console.log(index + ":" + wtf)
-        })
-         
+// refresh window every minute
+setInterval(function(){
+    hourChecker();
+}, (1000*30));
 
+//hour checker function
+function hourChecker () {
+       //scan each hour for content of span
+    $(".hour").each(function(thisHour){
+        var thisHour = $(this)
+        .find("span")
+        .html();
         
-      
-  })
-// var time = $(".wtf").siblings(".hour").text();
-// console.log(time);
+        console.log(thisHour);
+        //convert string to number
+         thisHour = Number(thisHour);
+        // if afternoon convert to 24 standard
+        if (thisHour === 1 || thisHour === 2 || thisHour === 3){
+            thisHour = thisHour + 12;
+        }
+
+        //conditions for color change
+        if (thisHour === currentTime){
+            var wtf = $(this)
+            .siblings(".description")
+            .addClass("present")
+        } else if (thisHour > currentTime){
+            var wtf = $(this)
+            .siblings(".description")
+            .addClass("future")
+        } else {
+            var wtf = $(this)
+            .siblings(".description")
+            .addClass("past")
+        }
+    })
+};
