@@ -19,6 +19,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
     <title>Work Day Scheduler</title>
   </head>
 
@@ -31,11 +32,68 @@
     <div class="container">
       <!-- 0900 -->
       <div class="row">
-        <div class="col-2 time-block hour">0900</div>
-        <textarea class="col-8 description">Build this app</textarea>
+        <div id="debugger" class="col-2 time-block hour"><span>7</span>AM</div>
+        <textarea class="col-8 description">Hour 7</textarea>
+        <button class="col-2 saveBtn">Save</button>
+      </div>
+
+      <!-- 1000 -->
+      <div class="row">
+        <div class="col-2 time-block hour"><span>8</span>AM</div>
+        <textarea class="col-8 description wtf">Hour 8</textarea>
+        <button class="col-2 saveBtn">Save</button>
+      </div>
+
+      <!-- 1100 -->
+      <div class="row">
+        <div class="col-2 time-block hour"><span>9</span>AM</div>
+        <textarea class="col-8 description">Hour 9</textarea>
+        <button class="col-2 saveBtn">Save</button>
+      </div>
+
+      <!-- 1200 -->
+      <div class="row">
+        <div class="col-2 time-block hour"><span>10</span>AM</div>
+        <textarea class="col-8 description">Hour 10</textarea>
+        <button class="col-2 saveBtn">Save</button>
+      </div>
+
+      <!-- 1300 -->
+      <div class="row">
+        <div class="col-2 time-block hour"><span>11</span>AM</div>
+        <textarea class="col-8 description past">Hour 11</textarea>
+        <button class="col-2 saveBtn">Save</button>
+      </div>
+
+      <!-- 1400 -->
+      <div class="row">
+        <div class="col-2 time-block hour"><span>12</span>APM</div>
+        <textarea class="col-8 description present">Hour 12</textarea>
+        <button class="col-2 saveBtn">Save</button>
+      </div>
+
+      <!-- 1500 -->
+      <div class="row">
+        <div class="col-2 time-block hour"><span>1</span>PM</div>
+        <textarea class="col-8 description future">Hour 13</textarea>
+        <button class="col-2 saveBtn">Save</button>
+      </div>
+
+      <!-- 1600 -->
+      <div class="row">
+        <div class="col-2 time-block hour"><span>2</span>PM</div>
+        <textarea class="col-8 description">Hour 14</textarea>
+        <button class="col-2 saveBtn">Save</button>
+      </div>
+
+      <!-- 1700 -->
+      <div class="row">
+        <div class="col-2 time-block hour"><span>3</span>PM</div>
+        <textarea class="col-8 description">Hour 15</textarea>
         <button class="col-2 saveBtn">Save</button>
       </div>
     </div>
+
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
