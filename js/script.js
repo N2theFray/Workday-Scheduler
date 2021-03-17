@@ -4,7 +4,7 @@ var todaysDate = d.toDateString();
 var currentTime = d.getHours();
 
 // if time is in afternoon convert to 24 hr standard
-if (currentTime === 1 || currentTime === 2 || currentTime === 3){
+if (currentTime === 1 || currentTime === 2 || currentTime === 3 || currentTime === 5 || currentTime === 5){
     currentTime = currentTime + 12;
 }
 
@@ -27,7 +27,7 @@ function hourChecker () {
         //convert string to number
          thisHour = Number(thisHour);
         // if afternoon convert to 24 standard
-        if (thisHour === 1 || thisHour === 2 || thisHour === 3){
+        if (thisHour === 1 || thisHour === 2 || thisHour === 3 || thisHour === 4 || thisHour === 5){
             thisHour = thisHour + 12;
         }
 
@@ -85,16 +85,21 @@ $(".saveBtn").on("click", function(){
     // debugger;
     
     hourContent = Number(hourContent);
-    if (hourContent === 1 || hourContent === 2 || hourContent === 3){
+    if (hourContent === 1 || hourContent === 2 || hourContent === 3 || hourContent === 4 || hourContent === 5){
         hourContent = hourContent + 12;
     }
     
-    taskArray[hourContent-7]=content;
+    //subtract 9 to set hourcontent to index 0
+    taskArray[hourContent-9]=content;
     
     saveTasks();
 })
 
-
+$(".clearButton").on("click", function(){
+    localStorage.clear();
+    location.reload();
+    // loadTasks();
+});
 
 //itit load and time check
 loadTasks();
