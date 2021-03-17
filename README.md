@@ -1,6 +1,5 @@
-# Work Day Scheduler Starter Code
+# Work Day Scheduler
 
-N2theFray.github.io/Workday-scheduler
 
 <img width="1304" alt="Screen Shot 2021-03-17 at 2 35 28 PM" src="https://user-images.githubusercontent.com/78673754/111461378-30172280-872e-11eb-881a-ed34961b71be.png">
 
