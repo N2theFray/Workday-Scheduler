@@ -1,12 +1,18 @@
 //get current tinme
 var d = new Date();
+var todaysDate = d.toDateString();
 var currentTime = d.getHours();
 
 // if time is in afternoon convert to 24 hr standard
 if (currentTime === 1 || currentTime === 2 || currentTime === 3){
     currentTime = currentTime + 12;
 }
-var taskArray = []
+
+//init taskArray
+var taskArray =JSON.parse(localStorage.getItem("taskArray"));
+    if(!taskArray){
+        taskArray = []
+    }
 
 
 //hour checker function
@@ -42,38 +48,30 @@ function hourChecker () {
     })
 };
 
+//save task into local Array
 function saveTasks(){
     localStorage.setItem("taskArray", JSON.stringify(taskArray));
 };
 
+//load task and iterate through items
 function loadTasks(){
-    var taskArray =JSON.parse(localStorage.getItem("taskArray"));
-
-    if(!taskArray){
-        taskArray = []
-    }
-
     var i = 0;
         $(".hour").each(function(){
             var check = $(this)
             .siblings(".description")
             .text(taskArray[i]);
-           
-            
-           
-        // debugger;
-        
-        // console.log(check);
-       
-        // console.log(taskArray[i]);
         i++;
         });   
-        
-    
-
-
 };
 
+
+$("#currentDay").each(function(){
+    checkCheck = $(this)
+        .text(todaysDate);
+})
+
+
+//interaction with save button
 $(".saveBtn").on("click", function(){
     
     var content = $(this)
@@ -97,6 +95,8 @@ $(".saveBtn").on("click", function(){
 })
 
 
+
+//itit load and time check
 loadTasks();
 hourChecker();
 
